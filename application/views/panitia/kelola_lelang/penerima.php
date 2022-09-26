@@ -37,7 +37,10 @@
                                             ?>
                                         </td>
 
-                                        <td><a href="#" class="btn btn-sm btn-warning mr-2" data-toggle="modal" data-target="#editMenuModal<?= $row['peserta_id'] ?>"><i class="fas fa-edit"></i>Ubah</a><a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row['peserta_id'] ?>"><i class="fas fa-trash-can"></i>Hapus</a></td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-info mr-2" data-toggle="modal" data-target="#editMenuModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-file-document-edit"></i> </i>Ubah</a>
+                                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
+                                        </td>
                                         <!-- Edit Menu Modal -->
                                         <div class="modal fade" id="editMenuModal<?= $row['peserta_id'] ?>" tabindex="-1" aria-labelledby="editOrderModal" aria-hidden="true">
                                             <div class="modal-dialog modal-xl">

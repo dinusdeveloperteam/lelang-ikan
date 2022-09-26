@@ -63,8 +63,6 @@ class Panitia extends CI_Model
         return $this->db->delete('lelang', ['lelang_id' => $lelang_id]);
     }
 
-
-
     //kelola penawaran
     function penawaran()
     {

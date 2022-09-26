@@ -54,9 +54,9 @@
                                             <td>q</td>
                                             <td>
                                                 <div style="">
-                                                    <a href="#" class="btn btn-sm btn-info " data-toggle="modal" data-target="#editMenuModal<?= $row->peserta_id ?>">Verifikasi</a>
-                                                    <a href="#" class="btn btn-sm btn-danger " data-toggle="modal" data-target="#deletepenjualModal<?= $row->peserta_id ?>">Hapus</a>
-                                                    <a href="#" class="btn btn-sm btn-success " data-toggle="modal" data-target="#notifEmail"></i>Kirim Email</a>
+                                                    <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editMenuModal<?= $row->peserta_id ?>"><i class="mdi mdi-check-circle"></i> Verifikasi</a>
+                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row->peserta_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
+                                                    <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#notifEmail"></i><i class="mdi mdi-send"></i> Kirim Email</a>
                                                 </div>
                                                 <!-- Edit Menu Modal -->
                                                 <div class="modal fade" id="editMenuModal<?= $row->peserta_id ?>" tabindex="-1" aria-labelledby="editOrderModal" aria-hidden="true">
