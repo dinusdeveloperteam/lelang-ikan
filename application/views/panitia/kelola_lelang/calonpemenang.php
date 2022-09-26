@@ -14,32 +14,24 @@
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Nama</th>
                                         <th>Lelang ID</th>
                                         <th>Peserta ID</th>
-                                        <th>Konfirmasi Terima Produk</th>
+                                        <th>Nama Peserta</th>
+                                        <th>Harga Tawar Tertinggi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($Penerima as $row) {
+                                    foreach ($calonPemenangLelang as $row) {
                                     ?>
-                                        <td><?= $row['nama'] ?></td>
                                         <td><?= $row['lelang_id'] ?></td>
                                         <td><?= $row['peserta_id'] ?></td>
-                                        <td><?php
-                                            if ($row['konfirmasi_terimaproduk'] == 0) {
-                                                echo "<span class='badge badge-danger'>Belum Diterima</span>";
-                                            } else if ($row['konfirmasi_terimaproduk'] == 1) {
-                                                echo "<span class='badge badge-success'>Sudah Diterima</span>";
-                                            }
-                                            ?>
-                                        </td>
-
+                                        <td><?= $row['nama'] ?></td>
+                                        <td><?= $row['harga_tawar'] ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-info mr-2" data-toggle="modal" data-target="#editMenuModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-file-document-edit"></i> </i>Ubah</a>
-                                            <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
+                                            <a href="#" class="btn btn-sm btn-info mr-2" data-toggle="modal" data-target="#editMenuModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-file-document-edit"></i> </i> Detail</a>
+                                            <a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-delete-forever"></i> Konfirmasi</a>
                                         </td>
                                         <!-- Edit Menu Modal -->
                                         <div class="modal fade" id="editMenuModal<?= $row['peserta_id'] ?>" tabindex="-1" aria-labelledby="editOrderModal" aria-hidden="true">

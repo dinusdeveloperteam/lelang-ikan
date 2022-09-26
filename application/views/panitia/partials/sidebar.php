@@ -43,7 +43,13 @@
                         <a class="nav-link" href="<?= base_url('panitia/pemenang') ?>">Pemenang Lelang</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('panitia/calonpemenang') ?>">Calon Pemenang</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('panitia/penerima') ?>">Penerima Lelang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('panitia/deposit') ?>">Peserta Deposit</a>
                     </li>
                 </ul>
             </div>

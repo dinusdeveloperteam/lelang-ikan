@@ -59,8 +59,7 @@
                                                     ?>
                                             <td>
                                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editMenuModal<?= $row->pelelang_id ?>"><i class="mdi mdi-file-document-edit"></i> Ubah</a>
-                                                <a href="#" class="btn btn-sm btn-danger " data-toggle="modal" data-target="#deletepenjualModal<?= $row->pelelang_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
-                                                </a>
+                                                <a href="#" class="btn btn-sm btn-danger " data-toggle="modal" data-target="#deletePelelangModal<?= $row->pelelang_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
                                             </td>
                                             <!-- Edit Menu Modal -->
                                             <div class="modal fade" id="editMenuModal<?= $row->pelelang_id ?>" tabindex="-1" aria-labelledby="editOrderModal" aria-hidden="true">
@@ -202,6 +201,25 @@
                                                     </div>
                                                 </div>
                                                 </form>
+                                            </div>
+
+                                            <!-- Delete Pelelang -->
+                                            <div class="modal fade" id="deletePelelangModal<?= $row->pelelang_id ?>" tabindex="-1" aria-labelledby="deletePelelangModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content bg-light">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deletePelelangModalLabel">Hapus Pelelang</h5>
+                                                            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h4>Yakin ingin menghapus Pembayaran dengan ID "<?= $row->pelelang_id ?>" ?</h4>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+                                                            <a href="<?= base_url() ?>panitia/pelelang/hapusPelelang/<?= $row->pelelang_id; ?>" class="btn btn-danger">Ya</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                         </div>
                         </tr>

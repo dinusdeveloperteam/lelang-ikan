@@ -24,11 +24,18 @@ class Panitia extends CI_Model
         $query = $this->db->get('peserta');
         return $query->result();
     }
+
     public function hapusDataPeserta($peserta_id)
     {
         return $this->db->delete('peserta', ['peserta_id' => $peserta_id]);
     }
 
+    // Kelola peserta deposit
+    function deposit()
+    {
+        $query = $this->db->get('peserta_deposit');
+        return $query->result();
+    }
 
 
     // kelola akun panitia
@@ -70,16 +77,32 @@ class Panitia extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    function deletePenawaran($lelang_id)
+    function deletePenawaran()
     {
-        return $this->db->query("DELETE l, lb FROM lelang JOIN lelang_bid lb ON l.lelang_id=lb.lelang_id WHERE l.lelang_id=$lelang_id");
+        return $this->db->query("DELETE l, lb FROM lelang l JOIN lelang_bid lb ON l.lelang_id=lb.lelang_id WHERE l.lelang_id=lb.lelang_id");
     }
 
     //kelola pemenang
     function pemenang()
     {
-        $query = "SELECT lb.*,p.*,l.*,lm.* FROM lelang_pemenang lm, lelang_bid lb,peserta p,lelang l WHERE lb.lelang_id=l.lelang_id and p.peserta_id=lb.peserta_id";
-        return $this->db->query($query)->result();
+        // $query = "SELECT lb.*,p.*,l.*,lm.* FROM lelang_pemenang lm, lelang_bid lb,peserta p,lelang l WHERE lb.lelang_id=l.lelang_id and p.peserta_id=lb.peserta_id";
+        // return $this->db->query($query)->result_array();
+
+        $query = $this->db->get('lelang_pemenang');
+        return $query->result();
+    }
+
+    // Kelola Calon Pemenang
+
+    function calonPemenang()
+    {
+        $query = "SELECT l.*,p.*,lb.*,lm.* FROM lelang l,peserta p,lelang_bid lb,lelang_pemenang lm WHERE l.lelang_id=lm.lelang_id and p.peserta_id=lb.peserta_id and p.peserta_id=lm.peserta_id";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function deletePemenang($lelang_id)
+    {
+        return $this->db->delete('lelang_pemenang', ['lelang_id' => $lelang_id]);
     }
 
     //Kelola Pembayaran
@@ -95,8 +118,6 @@ class Panitia extends CI_Model
         return $this->db->delete('lelang_pembayaran', ['lelang_id' => $lelang_id]);
     }
 
-
-
     // Kelola penerima lelang
 
     function penerima()
@@ -105,9 +126,9 @@ class Panitia extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    function deletePenerima($peserta_id)
+    function deletePenerima()
     {
-        return $this->db->query("DELETE lp, p FROM lelang_pemenang lp JOIN peserta p ON lp.peserta_id=p.peserta_id WHERE lp.peserta_id=$peserta_id");
+        return $this->db->query("DELETE lp, p FROM lelang_pemenang lp JOIN peserta p ON lp.peserta_id=p.peserta_id WHERE lp.peserta_id=p.peserta_id");
     }
 
 

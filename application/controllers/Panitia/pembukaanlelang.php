@@ -60,9 +60,9 @@ class Pembukaanlelang extends CI_Controller
     }
 
     //Fungsi Delete
-    public function hapus($id)
+    public function hapus($lelang_id)
     {
-        $this->Panitia->hapusDataPembukaanLelang($id);
+        $this->Panitia->hapusDataPembukaanLelang($lelang_id);
         redirect('panitia/pembukaanlelang');
     }
 }

@@ -145,7 +145,6 @@
                                         <!-- End Detail -->
 
 
-
                                         <div class="modal fade" id="deletepenjualModal<?= $row['lelang_id'] ?>" tabindex="-1" aria-labelledby="deletepenjualModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content bg-light">
@@ -158,7 +157,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                                                        <a href="<?= base_url() ?>panitia/penawaran/<?= $row['lelang_id']; ?>" class="btn btn-danger">Ya</a>
+                                                        <a href="<?= base_url() ?>panitia/penawaran/deletepenawaran/<?= $row['lelang_id']; ?>" class="btn btn-danger">Ya</a>
                                                     </div>
                                                 </div>
                                             </div>

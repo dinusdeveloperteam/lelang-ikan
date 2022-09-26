@@ -50,7 +50,7 @@
                                             </td>
                                             <td>
                                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editMenuModal<?= $row->lelang_id ?>"><i class="mdi mdi-file-document-edit"></i> Ubah</a>
-                                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row->lelang_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
+                                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapusPembukaanModal<?= $row->lelang_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
                                                 </a>
                                             </td>
                                             <!-- Edit Menu Modal -->
@@ -153,6 +153,27 @@
                                                 </div>
                                                 </form>
                                             </div>
+                                            <!-- Modal Delete -->
+                                            <div class="modal fade" id="hapusPembukaanModal<?= $row->lelang_id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <span>Yakin ingin hapus data?</span>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                                            <a href="<?= base_url() ?>panitia/pembukaanlelang/hapus/<?= $row->lelang_id; ?>" class="btn btn-danger">Hapus</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Modal Delete -->
                         </div>
                         </tr>
                     <?php } ?>

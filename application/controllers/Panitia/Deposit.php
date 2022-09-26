@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Penawaran extends CI_Controller
+class Deposit extends CI_Controller
 {
     function __construct()
     {
@@ -12,42 +12,34 @@ class Penawaran extends CI_Controller
     public function index()
     {
 
-        $TampilData = $this->Panitia->penawaran();
-        $page = 'Penawaran Lelang';
+        $TampilData = $this->Panitia->deposit();
+        $page = 'Verifikasi Peserta Deposit';
         $data = [
-            'PenawaranLelang' => $TampilData,
+            'peserta_deposit' => $TampilData,
             'title' => $page,
             'breadcrumb' => $page
         ];
        
         $data['user'] = $this->Panitia->user_panitiaById($this->session->panitia_id);
         $this->load->view('panitia/partials/start', $data);
-        $this->load->view('panitia/kelola_lelang/penawaran', $data);
+        $this->load->view('panitia/kelola_lelang/peserta_deposit', $data);
         $this->load->view('panitia/partials/end');
-    }
-
-    //Fungsi Delete
-    public function deletepenawaran($lelang_id)
-    {
-        $this->Panitia->deletePenawaran($lelang_id);
-        redirect('panitia/penawaran');
     }
 
     //Fungsi Edit
     public function edit($id)
     {
-        
         $data['id'] = $id;
         $this->form_validation->set_rules('status', 'Status Order', 'required');
         
         if ($this->form_validation->run() == false) {
-            redirect('panitia/kelola_lelang/penawaran/');
+            redirect('panitia/deposit/');
         } else {
             $this->db->set('status', $this->input->post('status', true));
-            $this->db->where('lelang_id', $id);
-            $this->db->update('lelang');
+            $this->db->where('deposit_id', $id);
+            $this->db->update('peserta_deposit');
             $this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert">Order Berhasil Terupdate!</div>');
-            redirect('panitia/penawaran/');
+            redirect('panitia/deposit/');
         }
 
     }

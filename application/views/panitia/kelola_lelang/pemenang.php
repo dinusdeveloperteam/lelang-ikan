@@ -53,9 +53,9 @@
                                             <td><?= $statusPembayaran ?></td>
                                             <td>q</td>
                                             <td>
-                                                <div style="">
+                                                <div>
                                                     <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editMenuModal<?= $row->peserta_id ?>"><i class="mdi mdi-check-circle"></i> Verifikasi</a>
-                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletepenjualModal<?= $row->peserta_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
+                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePemenangModal<?= $row->peserta_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
                                                     <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#notifEmail"></i><i class="mdi mdi-send"></i> Kirim Email</a>
                                                 </div>
                                                 <!-- Edit Menu Modal -->
@@ -126,15 +126,15 @@
                                                 <!-- End Detail -->
 
                                                 <!-- Modal Hapus -->
-                                                <div class="modal fade" id="deletepenjualModal<?= $row->peserta_id ?>" tabindex="-1" aria-labelledby="deletepenjualModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="deletePemenangModal<?= $row->peserta_id ?>" tabindex="-1" aria-labelledby="deletePemenangModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content bg-light">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="deletepenjualModalLabel">Hapus Pembayaran</h5>
+                                                                <h5 class="modal-title" id="deletePemenangModalLabel">Hapus Pembayaran</h5>
                                                                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <h4>Yakin ingin menghapus Pembayaran</h4>
+                                                                <h4>Yakin ingin menghapus Pemenang</h4>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
