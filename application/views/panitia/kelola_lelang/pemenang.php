@@ -21,7 +21,7 @@
                                         <th>Harga Tawar</th>
                                         <th>Tanggal Diumumkan</th>
                                         <th>Status Pembayaran</th>
-                                        <th>Status</th>
+                                        <!-- <th>Status</th> -->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -33,33 +33,32 @@
                                     ?>
                                         <tr>
                                             <td><?= $count ?></td>
-                                            <td><?= $row->lelang_id ?></td>
-                                            <td><?= $row->nama ?></td>
-                                            <td><?= $row->produk ?></td>
-                                            <td>Rp. <?= $row->harga_tawar ?></td>
-                                            <td><?= $row->tgl_diumumkan ?></td>
-                                            <?php
-                                            $verif = $row->status;
-                                            if ($verif == 0) {
-                                                $statusPembayaran = "<span class='badge badge-secondary'>Belum dibayar</span>";
-                                            } else if ($verif == 1) {
-                                                $statusPembayaran = "<span class='badge badge-success'>Telah dibayar</span>";
-                                            } else if ($verif == 2) {
-                                                $statusPembayaran = "<span class='badge badge-danger'>Ditolak</span>";
-                                            } else {
-                                                $statusPembayaran = "<span class='badge badge-warning'>Unknown</span>";
-                                            }
+                                            <td><?= $row['lelang_id'] ?></td>
+                                            <td><?= $row['nama']?></td>
+                                            <td><?= $row['produk'] ?></td>
+                                            <td>Rp. <?= $row['harga_tawar'] ?></td>
+                                            <td><?= $row['tgl_diumumkan'] ?></td>
+                                            <?php 
+                                                $data = $row['status'];
+                                                if($data == 0){
+                                                    $status = "<span?></span>";
+                                                }else if($data == 1){
+                                                    $status = "Telah dibayar";
+                                                }else if($data == 2){
+                                                    $status = "Ditolak";
+                                                }else{
+                                                    echo "Status tidak diketahui";
+                                                }
                                             ?>
-                                            <td><?= $statusPembayaran ?></td>
-                                            <td>q</td>
+                                            <td><?= $status ?></td>
                                             <td>
                                                 <div>
-                                                    <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editMenuModal<?= $row->peserta_id ?>"><i class="mdi mdi-check-circle"></i> Verifikasi</a>
-                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePemenangModal<?= $row->peserta_id ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
+                                                    <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editMenuModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-check-circle"></i> Verifikasi</a>
+                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePemenangModal<?= $row['peserta_id'] ?>"><i class="mdi mdi-delete-forever"></i> Hapus</a>
                                                     <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#notifEmail"></i><i class="mdi mdi-send"></i> Kirim Email</a>
                                                 </div>
                                                 <!-- Edit Menu Modal -->
-                                                <div class="modal fade" id="editMenuModal<?= $row->peserta_id ?>" tabindex="-1" aria-labelledby="editOrderModal" aria-hidden="true">
+                                                <div class="modal fade" id="editMenuModal<?= $row['peserta_id'] ?>" tabindex="-1" aria-labelledby="editOrderModal" aria-hidden="true">
                                                     <div class="modal-dialog modal-xl">
                                                         <div class="modal-content bg-default">
                                                             <div class="modal-header bg-white">
@@ -69,16 +68,16 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body text-dark font-weight-bold bg-white">
-                                                                <form action="<?= base_url('panitia/pemenang/update/') . $row->lelang_id ?>" method="post">
+                                                                <form action="<?= base_url('panitia/pemenang/update/') . $row['lelang_id'] ?>" method="post">
                                                                     <div class="input-group">
                                                                         <select class="custom-select" name="status" id="status">
-                                                                            <option value="<?= $row->status ?>">
+                                                                            <option value="<?= $row['status'] ?>">
                                                                                 <?php
-                                                                                    if ($row->status == 0) {
+                                                                                    if ($row['status'] == 0) {
                                                                                         echo 'Belum dibayar';
-                                                                                    } else if ($row->status == 1) {
+                                                                                    } else if ($row['status'] == 1) {
                                                                                         echo 'Telah dibayar';
-                                                                                    } else if ($row->status == 2) {
+                                                                                    } else if ($row['status'] == 2) {
                                                                                         echo 'Ditolak';
                                                                                     }else {
                                                                                         echo 'Unknown';
@@ -126,7 +125,7 @@
                                                 <!-- End Detail -->
 
                                                 <!-- Modal Hapus -->
-                                                <div class="modal fade" id="deletePemenangModal<?= $row->peserta_id ?>" tabindex="-1" aria-labelledby="deletePemenangModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="deletePemenangModal<?= $row['peserta_id'] ?>" tabindex="-1" aria-labelledby="deletePemenangModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content bg-light">
                                                             <div class="modal-header">
@@ -138,7 +137,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
-                                                                <a href="<?= base_url() ?>panitia/pemenang<?= $row->peserta_id ?>" class="btn btn-danger">Ya</a>
+                                                                <a href="<?= base_url() ?>panitia/pemenang<?= $row['peserta_id'] ?>" class="btn btn-danger">Ya</a>
                                                             </div>
                                                         </div>
                                                     </div>

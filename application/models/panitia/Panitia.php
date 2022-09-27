@@ -85,18 +85,18 @@ class Panitia extends CI_Model
     //kelola pemenang
     function pemenang()
     {
-        // $query = "SELECT lb.*,p.*,l.*,lm.* FROM lelang_pemenang lm, lelang_bid lb,peserta p,lelang l WHERE lb.lelang_id=l.lelang_id and p.peserta_id=lb.peserta_id";
-        // return $this->db->query($query)->result_array();
+        $query = "SELECT * FROM lelang_pemenang lm, lelang_bid lb,peserta p,lelang l WHERE lb.lelang_id=l.lelang_id AND p.peserta_id=lb.peserta_id ORDER BY lm.tgl_diumumkan DESC";
+        return $this->db->query($query)->result_array();
 
-        $query = $this->db->get('lelang_pemenang');
-        return $query->result();
+        // $query = $this->db->get('lelang_pemenang');
+        // return $query->result();
     }
 
     // Kelola Calon Pemenang
 
-    function calonPemenang()
+    function calonpemenang()
     {
-        $query = "SELECT l.*,p.*,lb.*,lm.* FROM lelang l,peserta p,lelang_bid lb,lelang_pemenang lm WHERE l.lelang_id=lm.lelang_id and p.peserta_id=lb.peserta_id and p.peserta_id=lm.peserta_id";
+        $query = "SELECT * FROM lelang l,peserta p,lelang_bid lb WHERE l.lelang_id=lb.lelang_id AND lb.peserta_id=p.peserta_id ORDER BY lb.harga_tawar DESC";
         return $this->db->query($query)->result_array();
     }
 
@@ -131,8 +131,6 @@ class Panitia extends CI_Model
         return $this->db->query("DELETE lp, p FROM lelang_pemenang lp JOIN peserta p ON lp.peserta_id=p.peserta_id WHERE lp.peserta_id=p.peserta_id");
     }
 
-
-
     // Kelola riwayat lelang
 
     function riwayat()
@@ -140,8 +138,6 @@ class Panitia extends CI_Model
         $query = "SELECT p.peserta_id,p.nama,l.produk,l.harga_beli_sekarang,lp.alamat_kirim,testimoni_pemenang FROM peserta p,lelang l,lelang_pemenang lp WHERE p.peserta_id=lp.peserta_id AND l.lelang_id=lp.lelang_id";
         return $this->db->query($query)->result_array();
     }
-
-
 
     //  Kelola Surat Perintah
     function suratperintah()

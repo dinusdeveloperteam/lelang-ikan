@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 class Calonpemenang extends CI_Controller
 {
     function __construct()
@@ -11,18 +12,16 @@ class Calonpemenang extends CI_Controller
         $this->load->library(array('session', 'form_validation', 'email'));
         $this->load->database();
     }
-
-    // Menampilkan daftar calon pemenang
-
     public function index()
     {
-        $TampilData = $this->Panitia->calonPemenang();
+        $TampilData = $this->Panitia->calonpemenang();
         $page = 'Calon Pemenang Lelang';
         $data = [
-            'calonPemenangLelang' => $TampilData,
+            'calonpemenang' => $TampilData,
             'title' => $page,
             'breadcrumb' => $page
         ];
+
         $data['user'] = $this->Panitia->user_panitiaById($this->session->panitia_id);
         $this->load->view('panitia/partials/start', $data);
         $this->load->view('panitia/kelola_lelang/calonpemenang', $data);

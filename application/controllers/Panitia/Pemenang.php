@@ -23,7 +23,6 @@ class Pemenang extends CI_Controller
             'breadcrumb' => $page
         ];
 
-
         $data['user'] = $this->Panitia->user_panitiaById($this->session->panitia_id);
         $this->load->view('panitia/partials/start', $data);
         $this->load->view('panitia/kelola_lelang/pemenang', $data);
